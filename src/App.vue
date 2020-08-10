@@ -1,11 +1,8 @@
 <template>
   <div>
     <films-list
+      v-if="info"
       :data="info"
-    />
-
-    <pagination-info
-      :value="info"
       :count="countInfo"
     />
   </div>
@@ -13,12 +10,10 @@
 
 <script>
   import FilmsList from "./components/FilmsList";
-  import PaginationInfo from "./components/PaginationInfo";
 
   export default {
     name: 'App',
     components: {
-      PaginationInfo,
       FilmsList,
     },
     data() {
@@ -28,9 +23,7 @@
         status: 0,
       };
     },
-    props: {
-
-    },
+    props: {},
     mounted() {
       const axios = require('axios').default;
 
