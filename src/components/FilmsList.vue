@@ -3,9 +3,7 @@
     <div>
       <input
         v-model="search"
-        type="search"
         placeholder="type here...">
-      <button @click="searchValue">Search</button>
       <p>{{search}}</p>
     </div>
     <film-item
@@ -44,7 +42,7 @@
       return {
         search: '',
         dataArray: null,
-        perData: 2,
+        perData: 4,
         pagination: {},
         name: null,
       }
@@ -74,7 +72,7 @@
       },
     },
     computed: {
-      collection() {
+      collection: function () {
         return this.paginate(this.data)
       }
     },
