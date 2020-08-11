@@ -63,19 +63,10 @@
             if(el2[1].some(searchEl => searchEl === el.url)){
               el.customEl.push(el2[0])
             }
-            // console.log(el.url)
-            // console.log(el2)
           })
-          console.log(el)
-          // return el.url;
         })
         return this.newData;
       },
-      // searchDataValue(valueData, value) {
-      //   return valueData.filter(el => {
-      //     return el.films.some(elFilms => elFilms === value)
-      //   })
-      // }
     }
   }
 </script>

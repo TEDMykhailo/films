@@ -2,8 +2,13 @@
   <div>
     <div>
       <input
+        type="text"
         v-model="search"
-        placeholder="type here...">
+        placeholder="type here..."/>
+      <input
+        type="submit"
+        @click="clearValue"
+        value="Clear"/>
       <p>{{search}}</p>
     </div>
     <film-item
@@ -14,6 +19,7 @@
       :release_date="film.release_date"
       :producer="film.producer"
       :opening_crawl="film.opening_crawl"
+      :actorArray="film.customEl"
     />
     <div>
       <button v-for="p in pagination.pages" @click.prevent="setPage(p)">
@@ -45,12 +51,26 @@
         perData: 4,
         pagination: {},
         name: null,
+        newValue: '',
       }
     },
     methods: {
+      clearValue(){
+        this.search = ''
+        console.log(this.search)
+      },
       searchValue() {
-        return this.collection.filter(el => {
-          return el.title.includes(this.search)
+        let this2 = this;
+        return this.collection.filter(function (el) {
+          if (el.title.includes(this2.search)) {
+            return el.title.includes(this2.search)
+          }
+          let a = el.customEl.some(function (el2) {
+            return el2.includes(this2.search)
+          });
+          if (a) {
+            return el;
+          }
         });
       },
       setPage(p) {
