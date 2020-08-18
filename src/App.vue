@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container" style="margin-top: 15px">
     <films-list
       v-if="info"
       :data="info"
@@ -12,6 +12,10 @@
 
 <script>
   import FilmsList from "./components/FilmsList";
+  import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
+
+  import 'bootstrap/dist/css/bootstrap.css'
+  import 'bootstrap-vue/dist/bootstrap-vue.css'
 
   export default {
     name: 'App',

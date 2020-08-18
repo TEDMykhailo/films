@@ -1,15 +1,17 @@
 <template>
   <div>
-    <div>
+    <div class="row form-group">
       <input
+        class="col-sm-9 form-control"
         type="text"
         v-model="search"
         placeholder="type here..."/>
       <input
+        class="btn btn-light offset-sm-1 col-sm-2 "
         type="submit"
         @click="clearValue"
         value="Clear"/>
-      <p>{{search}}</p>
+      <p class="" style="margin-top: 15px; margin-left: 14px">{{search}}</p>
     </div>
     <film-item
       v-if="collection"
@@ -21,17 +23,20 @@
       :opening_crawl="film.opening_crawl"
       :actorArray="film.customEl"
     />
-    <div>
-      <button v-for="p in pagination.pages" @click.prevent="setPage(p)">
-        {{p}}
-      </button>
+      <div class="" style="text-align: center">
+        <button v-for="p in pagination.pages"
+                @click.prevent="setPage(p)"
+                class="btn btn-light"
+                style="margin-right: 5px">
+          {{p}}
+        </button>
+      </div>
+      <div>
+        <p>
+          {{pagination.startIndex + 1}} to {{pagination.endIndex + 1}}
+        </p>
+      </div>
     </div>
-    <div>
-      <p>
-        {{pagination.startIndex + 1}} to {{pagination.endIndex + 1}}
-      </p>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -55,7 +60,7 @@
       }
     },
     methods: {
-      clearValue(){
+      clearValue() {
         this.search = ''
         console.log(this.search)
       },

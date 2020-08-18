@@ -5,8 +5,8 @@
     <p>Producer: {{producer}}</p>
     <p>Release date: {{release_date}}</p>
     <p>Opening crawl: {{opening_crawl}}</p>
-    <p>Actors: </p>
-    <p v-for="item in actorArray">{{item}}</p>
+    <p><b>Actors: </b><span v-for="(item, index) in actorArray">{{actorArray.length -1 == index ? item: item + ', '}}</span>
+    </p>
     <hr/>
   </div>
 </template>
